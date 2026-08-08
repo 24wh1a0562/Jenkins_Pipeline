@@ -22,7 +22,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deployment stage'
+                sh '''
+                    pkill -f 'userservice-0.0.1-SNAPSHOT.jar' || true
+                    nohup java -jar target/userservice-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+                '''
             }
         }
     }
