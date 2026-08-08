@@ -7,13 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'master',
-                    url: 'https://github.com/24wh1a0562/Jenkins_Pipeline.git'
-            }
-        }
-
+        
         stage('Build & Test') {
             steps {
                 sh 'mvn clean install'
